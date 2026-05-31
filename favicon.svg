@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <radialGradient id="blob-fill" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(31 27) rotate(56.5) scale(34.5 31.2)">
+      <stop offset="0" stop-color="#161226"/>
+      <stop offset="0.52" stop-color="#0a0915"/>
+      <stop offset="1" stop-color="#05040b"/>
+    </radialGradient>
+    <radialGradient id="glow-top" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(24 16) rotate(60.9) scale(20.3 14.2)">
+      <stop offset="0" stop-color="#d9d3ff" stop-opacity="0.92"/>
+      <stop offset="0.42" stop-color="#9c8cff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#9c8cff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-right" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(49 31) rotate(142.3) scale(18.8 14.6)">
+      <stop offset="0" stop-color="#f1eeff" stop-opacity="0.86"/>
+      <stop offset="0.48" stop-color="#b39cff" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#b39cff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="13" y1="16" x2="54" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f6f1ff" stop-opacity="0.84"/>
+      <stop offset="0.24" stop-color="#b8abff" stop-opacity="0.56"/>
+      <stop offset="0.5" stop-color="#5f4aa8" stop-opacity="0.18"/>
+      <stop offset="0.78" stop-color="#d4ccff" stop-opacity="0.44"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.72"/>
+    </linearGradient>
+    <filter id="blur-glow" x="6" y="4" width="54" height="57" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="2.2"/>
+    </filter>
+  </defs>
+
+  <path
+    d="M32.18 7.95C39.58 7.58 47.3 10.44 51.49 16.64C55.42 22.46 56.47 30.26 54.97 37.09C53.46 43.96 49.31 50.56 42.92 54.08C36.19 57.78 27.9 57.34 20.98 54.03C14.71 51.03 9.79 45.58 8.26 38.76C6.66 31.63 7.95 23.54 12.45 17.78C16.94 12.04 24.92 8.31 32.18 7.95Z"
+    fill="url(#blob-fill)"
+  />
+
+  <path
+    d="M32.18 7.95C39.58 7.58 47.3 10.44 51.49 16.64C55.42 22.46 56.47 30.26 54.97 37.09C53.46 43.96 49.31 50.56 42.92 54.08C36.19 57.78 27.9 57.34 20.98 54.03C14.71 51.03 9.79 45.58 8.26 38.76C6.66 31.63 7.95 23.54 12.45 17.78C16.94 12.04 24.92 8.31 32.18 7.95Z"
+    stroke="url(#rim)"
+    stroke-width="2.2"
+  />
+
+  <g filter="url(#blur-glow)">
+    <path
+      d="M17.11 17.65C20.46 12.78 26.75 9.29 33.03 9.33C27.35 10.71 22.7 14.45 19.94 19.42C17.05 24.62 16.19 30.83 17.64 36.57C15.05 31.05 13.64 22.69 17.11 17.65Z"
+      fill="url(#glow-top)"
+    />
+    <path
+      d="M51.31 23.61C53.61 28.65 53.68 35.08 51.56 40.19C49.39 45.43 44.93 49.79 39.55 52.17C44.01 47.96 46.82 42.12 47.18 36.01C47.53 30.15 46.03 24.34 43.14 19.33C46.5 19.84 49.88 20.46 51.31 23.61Z"
+      fill="url(#glow-right)"
+    />
+  </g>
+
+  <path
+    d="M18.57 18.87C22.17 14.21 28.36 11.29 34.21 11.63"
+    stroke="#fff"
+    stroke-opacity=".46"
+    stroke-linecap="round"
+    stroke-width="1.5"
+  />
+</svg>

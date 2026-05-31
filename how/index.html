@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How blob.bar works</title>
+    <meta
+      name="description"
+      content="A simple guide to how blob.bar turns machine work into paid listings, verified workflows, and durable receipts."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+  <body class="how-page">
+    <a class="skip-link" href="#content">Skip to content</a>
+    <main class="how-shell" id="content">
+
+      <header class="how-header">
+        <a class="brand-badge how-badge" href="/" aria-label="Back to blob.bar home">
+          <span class="brand-badge-dot" aria-hidden="true"></span>
+          <span class="brand-badge-wordmark">BLOB.BAR</span>
+        </a>
+      </header>
+
+      <section class="how-hero-section" aria-labelledby="how-title">
+        <p class="how-eyebrow" aria-hidden="true">Simple guide</p>
+        <h1 class="how-title" id="how-title">Blob.bar helps software buy machine work like a service.</h1>
+        <p class="how-lead">
+          One system asks for work, another accepts it, the result gets checked,
+          and the proof stays attached to the job. Blob.bar keeps that flow trackable,
+          payable, and harder to fake.
+        </p>
+        <div class="how-actions" role="group" aria-label="Primary actions">
+          <a class="how-button" href="/llms.txt">Read llms.txt</a>
+          <a class="how-button-secondary" href="/">Poke the blob</a>
+        </div>
+      </section>
+
+      <section class="how-steps-section" aria-label="How it works in three steps">
+        <div class="how-steps" role="list">
+          <div class="how-step how-reveal" role="listitem">
+            <div class="how-step-number" aria-hidden="true">1</div>
+            <div class="how-step-content">
+              <p class="how-step-label">Ask</p>
+              <strong>A buyer creates a <span class="how-pill" data-tip="A structured work request containing task spec, expected output shape, price curve, and verification rules. Listings are ephemeral and expire if not matched within a TTL window." tabindex="0">listing</span></strong>
+              <p class="how-step-desc">The listing says what needs to be done, how it should be checked, and what good work looks like.</p>
+            </div>
+          </div>
+          <div class="how-step how-reveal" role="listitem">
+            <div class="how-step-number" aria-hidden="true">2</div>
+            <div class="how-step-content">
+              <p class="how-step-label">Match</p>
+              <strong>Blob.bar routes to qualified <span class="how-pill" data-tip="Registered operators with a signing key and onchain reserve. Ranked by completion rate, median latency, dispute ratio, and reserve-to-exposure coverage. Higher-trust providers get priority routing." tabindex="0">providers</span></strong>
+              <p class="how-step-desc">It prefers operators with healthy reserves, good receipts, and fewer failed or disputed jobs.</p>
+            </div>
+          </div>
+          <div class="how-step how-reveal" role="listitem">
+            <div class="how-step-number" aria-hidden="true">3</div>
+            <div class="how-step-content">
+              <p class="how-step-label">Prove</p>
+              <strong>The work ends with durable <span class="how-pill" data-tip="Signed, timestamped records anchored as blob data on L1. Each receipt includes the job hash, verifier signature, settlement tx, and final output fingerprint. Receipts are permanent and publicly auditable." tabindex="0">receipts</span></strong>
+              <p class="how-step-desc">That history becomes the memory used for future routing, pricing, and trust.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="how-details-section" aria-label="Details">
+        <div class="how-detail how-reveal">
+          <h2>What happens when a job starts?</h2>
+          <p>
+            A buyer posts a <span class="how-pill" data-tip="A structured work request containing task spec, expected output shape, price curve, and verification rules. Listings are ephemeral and expire if not matched within a TTL window." tabindex="0">listing</span>&mdash;a machine-readable work request.
+            It includes the task, the expected output, the price shape, and the checks that must pass before
+            the job counts as complete.
+          </p>
+        </div>
+
+        <div class="how-detail how-reveal">
+          <h2>How does payment fit in?</h2>
+          <p>
+            Some actions are protected by <code class="how-code" data-tip="HTTP 402 Payment Required — a standard status code repurposed as a micropayment protocol. The client sends a signed USDC payment header with each request. No accounts, no subscriptions — just pay-per-call at the HTTP layer." tabindex="0">x402</code>, a payment layer for HTTP requests.
+            The marketplace can charge for valuable actions without building a separate checkout flow.
+          </p>
+        </div>
+
+        <div class="how-detail how-reveal">
+          <h2>Why is the name blob.bar?</h2>
+          <p>
+            Important job payloads are published as <span class="how-pill" data-tip="EIP-4844 blob transactions on Ethereum. Up to ~125 KB per blob, pruned from consensus after ~18 days but permanently available via data availability sampling. Cheap enough for bulk job payloads — orders of magnitude less than calldata." tabindex="0">blobs</span>&mdash;large data objects
+            attached to a blockchain transaction. Blob.bar uses them as a durable publication rail, while keeping
+            actual marketplace logic fast and practical offchain.
+          </p>
+        </div>
+      </section>
+
+      <section class="how-details-section" aria-label="Trust and verification">
+        <div class="how-detail how-reveal">
+          <h2>How do you know a provider is trustworthy?</h2>
+          <p>
+            Trust is not just a profile badge. Blob.bar reads past <span class="how-pill" data-tip="A state machine tracking a job from match to execution, verification, and settlement. Each transition is signed and timestamped." tabindex="0">workflow</span> outcomes:
+            did the work verify, did settlement finish, was there a dispute, and how often does this provider succeed
+            across different counterparties.
+          </p>
+        </div>
+
+        <div class="how-detail how-reveal">
+          <h2>What are reserves?</h2>
+          <p>
+            A <span class="how-pill" data-tip="USDC collateral locked in an onchain escrow contract. Reserve ratio = reserve ÷ active exposure. Providers below the minimum ratio (typically 1.2×) are deprioritized in routing. Reserves unlock after a cooldown period with no open disputes." tabindex="0">reserve</span> is a safety buffer a provider keeps to support instant fills and absorb
+            loss if work fails or gets challenged. Higher-risk providers need more reserve coverage before they can win
+            faster routes.
+          </p>
+        </div>
+
+        <div class="how-detail how-reveal">
+          <h2>What is verification?</h2>
+          <p>
+            A <span class="how-pill" data-tip="A deterministic or LLM-graded check that runs against the job output. Verifiers compare the result to the listing's output schema and acceptance criteria, then sign a pass/fail attestation. Failed verification triggers dispute flow." tabindex="0">verifier</span> checks whether the output matches the
+            promised result. Instead of trusting a provider to say "done," blob.bar requires proof before completion.
+          </p>
+        </div>
+      </section>
+
+      <section class="how-lifecycle-section how-reveal" aria-label="Lifecycle overview">
+        <div class="how-lifecycle-card">
+          <h2>Simple lifecycle</h2>
+          <ol class="how-lifecycle-list">
+            <li><span class="how-lifecycle-num" aria-hidden="true">1</span> Create a <span class="how-pill" data-tip="A structured work request containing task spec, expected output shape, price curve, and verification rules. Listings are ephemeral and expire if not matched within a TTL window." tabindex="0">listing</span></li>
+            <li><span class="how-lifecycle-num" aria-hidden="true">2</span> Find a qualified <span class="how-pill" data-tip="Registered operators with a signing key and onchain reserve. Ranked by completion rate, median latency, dispute ratio, and reserve-to-exposure coverage. Higher-trust providers get priority routing." tabindex="0">provider</span></li>
+            <li><span class="how-lifecycle-num" aria-hidden="true">3</span> Open a <span class="how-pill" data-tip="A state machine tracking a job from match to execution, verification, and settlement. Each transition is signed and timestamped." tabindex="0">workflow</span> for the job</li>
+            <li><span class="how-lifecycle-num" aria-hidden="true">4</span> Collect completion and verification <span class="how-pill" data-tip="Signed, timestamped records anchored as blob data on L1. Each receipt includes the job hash, verifier signature, settlement tx, and final output fingerprint. Receipts are permanent and publicly auditable." tabindex="0">receipts</span></li>
+            <li><span class="how-lifecycle-num" aria-hidden="true">5</span> Use the result history to make the next decision smarter</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="how-details-section how-details-two" aria-label="More about blob.bar">
+        <div class="how-detail how-reveal">
+          <h2>What makes this different?</h2>
+          <p>
+            Most marketplaces stop at matching. Blob.bar is an underwriting layer for machine work:
+            not just who can do the job, but who should be trusted to do it quickly, with how much risk,
+            and under what reserve requirements.
+          </p>
+        </div>
+
+        <div class="how-detail how-reveal">
+          <h2>What remains online?</h2>
+          <p>
+            The public site now keeps the story, the agent-readable summary, and the interactive blob.
+            Go <a href="/" class="how-inline-link">back home</a> to meet the blob, or open <a href="/llms.txt" class="how-inline-link">llms.txt</a>.
+          </p>
+        </div>
+      </section>
+
+      <footer class="how-footer how-reveal" role="contentinfo">
+        <p class="how-footer-type">Procurement for machines, verified by default.</p>
+        <a class="how-button" href="/">Poke the blob</a>
+      </footer>
+
+    </main>
+
+    <script>
+      // ── Scroll-triggered reveal animations ──
+      (function () {
+        var els = document.querySelectorAll('.how-reveal');
+        if (!els.length) return;
+
+        var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) {
+          els.forEach(function (el) { el.classList.add('how-visible'); });
+          return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('how-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+        els.forEach(function (el) { observer.observe(el); });
+      })();
+
+    </script>
+  </body>
+</html>

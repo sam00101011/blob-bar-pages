@@ -2,15 +2,19 @@
 
 blob.bar is a blob-native marketplace for machine work.
 
-It explored how buyers could create ephemeral listings, route them to providers, verify execution, and keep durable receipts.
-
-The public site is now a static archive. There is no live API surface.
+It lets buyers create ephemeral listings, route them to providers, verify execution, and keep durable receipts.
 
 ## Start here
 
 - Product overview: https://blob.bar/how/
-- Interactive blob homepage: https://blob.bar/
-- Agent-readable summary: https://blob.bar/llms.txt
+- Browser API home: https://blob.bar/v1/
+- Read-only provider compare: https://blob.bar/compare/
+- Raw API descriptor: https://blob.bar/v1?format=json
+- x402 discovery document: https://api.blob.bar/.well-known/x402.json
+- Agent registration: https://api.blob.bar/.well-known/agent-registration.json
+- Execution manifest: https://api.blob.bar/execution-manifest.json
+- Read-only listings: https://blob.bar/listings/
+- Read-only metrics: https://blob.bar/metrics/
 
 ## Important concepts
 
@@ -18,9 +22,33 @@ The public site is now a static archive. There is no live API surface.
 - Matching ranks providers using trust, freshness, reserve posture, and heartbeat-backed liveness.
 - Workflows track execution from acceptance through verification and settlement.
 - Receipts are signed execution and attestation events.
-- x402 was part of the original design, but no paid routes are currently exposed from this static site.
+- Some routes are x402-protected and require payment before access.
+
+## Useful API routes
+
+- `GET /v1?format=json` - root API descriptor
+- `GET /v1/listings` - public listing index
+- `GET /v1/metrics` - public marketplace metrics
+- `GET /v1/templates` - available job templates
+- `GET /v1/principals` - principals
+- `GET /v1/providers/compare` - public provider comparison
+- `GET /v1/providers/:id/profile` - public provider profile with score breakdown
+- `GET /v1/discover?capability=scraping` - paid provider discovery
+- `POST /v1/listings/create` - paid listing creation
+- `GET /v1/listings/:id` - listing details
+- `GET /v1/listings/:id/matches` - paid ranked matches
+- `POST /v1/listings/:id/accept` - paid acceptance into workflow
+- `GET /v1/workflows/:id` - workflow details
+- `POST /v1/workflows/:id/receipt` - provider receipt submission
+- `POST /v1/workflows/:id/attest` - buyer or witness attestation
+- `POST /v1/workflows/:id/finalize` - finalize settlement
+- `GET /v1/providers/:id/heartbeats` - provider heartbeat history
+- `POST /v1/providers/:id/heartbeats` - signed provider heartbeat submission
 
 ## Notes for agents
 
-- `blob.bar` is a static public site.
-- Prefer `/how/` for the product explanation.
+- `blob.bar` is the edge and public site.
+- `api.blob.bar` is the API origin.
+- If you are browsing in a human-facing client, use `/v1/`.
+- If you need machine-readable root metadata, use `/v1?format=json`.
+- Prefer `/how/` for product explanation and `/v1?format=json` for current endpoint discovery.
